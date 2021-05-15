@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import Text, WORD, TOP, X
+from tkinter import Text, WORD, TOP, LEFT, RIGHT, X, Button, Frame, BOTH
 
 """
 	Service for providing gui interface for tag counter logic
@@ -15,6 +15,7 @@ class guiService:
 		self.window.title("tagcounter")
 
 		self.initTextBox()
+		self.initButtons()
 
 		self.centerWindow()
 		self.window.mainloop()
@@ -33,3 +34,21 @@ class guiService:
 	def initTextBox(self):
 		self.window.urlTextBox = Text(height=1, bg="gray50", fg='white', wrap=WORD, font=("Helvetica", 18))
 		self.window.urlTextBox.pack(side=TOP, fill=X)
+
+	def initButtons(self):
+		frameButtons = Frame(self.window)
+		frameButtons.pack(fill=X)
+
+		self.window.loadButton = Button(frameButtons, text="Загрузить", height=3)
+		self.window.loadButton.config(command=self.loadButtonClick)
+		self.window.loadButton.pack(side=LEFT, expand=True, fill=BOTH)
+
+		self.window.loadButtonFromBase = Button(frameButtons, text="Загрузить из базы", height=3)
+		self.window.loadButtonFromBase.config(command=self.initLoadFromBaseClick)
+		self.window.loadButtonFromBase.pack(side=LEFT, expand=True, fill=BOTH)
+
+	def loadButtonClick(self):
+		self.window.loadButton["text"] = "Загружено"
+
+	def initLoadFromBaseClick(self):
+		self.window.loadButtonFromBase["text"] = "Загружено из базы"
