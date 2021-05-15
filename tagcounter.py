@@ -1,11 +1,12 @@
 import sys
+from guiService import guiService
+import tkinter
 
 """
 	Parsing of command line args to structured list.
 """
 def parseCommnadLineArguments():
 	if (len(sys.argv) == 1):
-		print("No commands")
 		return {}
 
 	commands = {}
@@ -16,6 +17,9 @@ def parseCommnadLineArguments():
 
 	return commands
 
+"""
+	Main function of the program.
+"""
 def main():
 	print("hello mentoring")
 
@@ -23,6 +27,7 @@ def main():
 	print(commands)
 	if len(commands) == 0:
 		print("Run GUI")
+		service = guiService()
 	else:
 		print("run console")
 
