@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import Text, WORD, TOP, X
 
 """
 	Service for providing gui interface for tag counter logic
@@ -12,6 +13,9 @@ class guiService:
 
 	def inintUI(self):
 		self.window.title("tagcounter")
+
+		self.initTextBox()
+
 		self.centerWindow()
 		self.window.mainloop()
 
@@ -25,3 +29,7 @@ class guiService:
 		x = (sw - w) / 2
 		y = (sh - h) / 2
 		self.window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+	def initTextBox(self):
+		self.window.urlTextBox = Text(height=1, bg="gray50", fg='white', wrap=WORD, font=("Helvetica", 18))
+		self.window.urlTextBox.pack(side=TOP, fill=X)
